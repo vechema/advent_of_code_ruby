@@ -5,6 +5,9 @@ module Year2021
     # @input is available if you need the raw data input
     # Call `data` to access either an array of the parsed data, or a single record for a 1-line input file
 
+    # rubocop:disable Metrics/AbcSize
+    # rubocop:disable Metrics/CyclomaticComplexity
+    # rubocop:disable Metrics/PerceivedComplexity
     def play_bingo(player_win: true)
       indices_of_winning_boards = []
       # Must draw at least 4 numbers to find a winner
@@ -39,6 +42,9 @@ module Year2021
         end
       end
     end
+    # rubocop:enable Metrics/AbcSize
+    # rubocop:enable Metrics/CyclomaticComplexity
+    # rubocop:enable Metrics/PerceivedComplexity
 
     def part_1
       @all_drawn_numbers, @boards = data

@@ -8,5 +8,7 @@ Dir[File.join(File.dirname(__FILE__), '..', 'challenges', '20*', '**', '*.rb')].
   require file
 end
 
+# rubocop:disable Lint/EmptyBlock
 RSpec.configure do |config|
 end
+# rubocop:enable Lint/EmptyBlock
