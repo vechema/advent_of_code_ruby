@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Year2021
   class Day03 < Solution
     # @input is available if you need the raw data input
@@ -37,15 +38,14 @@ module Year2021
       rating(select_by: :max_by, tie_breaker: '1') * rating(select_by: :min_by, tie_breaker: '0')
     end
 
-    private
-      # Processes each line of the input file and stores the result in the dataset
-      # def process_input(line)
-      #   line.map(&:to_i)
-      # end
+    # Processes each line of the input file and stores the result in the dataset
+    # def process_input(line)
+    #   line.map(&:to_i)
+    # end
 
-      # Processes the dataset as a whole
-      # def process_dataset(set)
-      #   set
-      # end
+    # Processes the dataset as a whole
+    # def process_dataset(set)
+    #   set
+    # end
   end
 end

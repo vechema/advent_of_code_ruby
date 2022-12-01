@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # frozen_string_literal: true %>
 
 class Solution
@@ -15,20 +17,21 @@ class Solution
 
   def data
     @data ||= begin
-                processed = @input.lines(chomp: true).map do |line|
-                  process_input line
-                end
+      processed = @input.lines(chomp: true).map do |line|
+        process_input line
+      end
 
-                processed.length == 1 ? processed.first : process_dataset(processed)
-              end
+      processed.length == 1 ? processed.first : process_dataset(processed)
+    end
   end
 
   private
-    def process_input(line)
-      line
-    end
 
-    def process_dataset(set)
-      set
-    end
+  def process_input(line)
+    line
+  end
+
+  def process_dataset(set)
+    set
+  end
 end

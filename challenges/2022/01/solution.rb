@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Year2022
   class Day01 < Solution
     # @input is available if you need the raw data input
@@ -9,13 +10,13 @@ module Year2022
       current_calories = 0
       data.each do |calories|
         current_calories += calories
-        if calories == 0
-          if current_calories > max_calories.min
-            min_index = max_calories.find_index(max_calories.min)
-            max_calories[min_index] = current_calories
-          end
-          current_calories = 0
+        next unless calories.zero?
+
+        if current_calories > max_calories.min
+          min_index = max_calories.find_index(max_calories.min)
+          max_calories[min_index] = current_calories
         end
+        current_calories = 0
       end
 
       max_calories.sum
@@ -30,14 +31,15 @@ module Year2022
     end
 
     private
-      # Processes each line of the input file and stores the result in the dataset
-      def process_input(line)
-        line.to_i
-      end
 
-      # Processes the dataset as a whole
-      # def process_dataset(set)
-      #   set
-      # end
+    # Processes each line of the input file and stores the result in the dataset
+    def process_input(line)
+      line.to_i
+    end
+
+    # Processes the dataset as a whole
+    # def process_dataset(set)
+    #   set
+    # end
   end
 end

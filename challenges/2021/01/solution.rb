@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Year2021
   class Day01 < Solution
     # @input is available if you need the raw data input
@@ -6,7 +7,7 @@ module Year2021
 
     def num_increases(array:)
       array.each_with_index.count do |x, index|
-        x > array[[0,index - 1].max]
+        x > array[[0, index - 1].max]
       end
     end
 
@@ -20,14 +21,15 @@ module Year2021
     end
 
     private
-      # Processes each line of the input file and stores the result in the dataset
-      def process_input(line)
-        line.to_i
-      end
 
-      # Processes the dataset as a whole
-      # def process_dataset(set)
-      #   set
-      # end
+    # Processes each line of the input file and stores the result in the dataset
+    def process_input(line)
+      line.to_i
+    end
+
+    # Processes the dataset as a whole
+    # def process_dataset(set)
+    #   set
+    # end
   end
 end

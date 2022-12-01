@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Year2021
   class Day02 < Solution
     # @input is available if you need the raw data input
@@ -38,14 +39,15 @@ module Year2021
     end
 
     private
-      # Processes each line of the input file and stores the result in the dataset
-      def process_input(line)
-        [line.split[0], line.split[1].to_i]
-      end
 
-      # Processes the dataset as a whole
-      # def process_dataset(set)
-      #   set
-      # end
+    # Processes each line of the input file and stores the result in the dataset
+    def process_input(line)
+      [line.split[0], line.split[1].to_i]
+    end
+
+    # Processes the dataset as a whole
+    # def process_dataset(set)
+    #   set
+    # end
   end
 end
