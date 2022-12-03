@@ -20,7 +20,6 @@ module Year2021
       rate(select_by: :max_by) * rate(select_by: :min_by)
     end
 
-    # rubocop:disable Metrics/AbcSize
     def rating(select_by:, tie_breaker:)
       rating = ''
       block = proc { |_, v| v }
@@ -34,7 +33,6 @@ module Year2021
       end
       rating.to_i(2)
     end
-    # rubocop:enable Metrics/AbcSize
 
     def part_2
       rating(select_by: :max_by, tie_breaker: '1') * rating(select_by: :min_by, tie_breaker: '0')

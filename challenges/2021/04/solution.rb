@@ -5,9 +5,6 @@ module Year2021
     # @input is available if you need the raw data input
     # Call `data` to access either an array of the parsed data, or a single record for a 1-line input file
 
-    # rubocop:disable Metrics/AbcSize
-    # rubocop:disable Metrics/CyclomaticComplexity
-    # rubocop:disable Metrics/PerceivedComplexity
     def play_bingo(player_win: true)
       indices_of_winning_boards = []
       # Must draw at least 4 numbers to find a winner
@@ -17,22 +14,9 @@ module Year2021
         @boards.each_with_index do |board, board_index|
           next if indices_of_winning_boards.include?(board_index)
 
-          drawn_coordinates = []
-          nondrawn_numbers = []
-          board.each_with_index do |row, row_index|
-            row.each_with_index do |value, column_index|
-              if drawn_numbers.include?(value)
-                drawn_coordinates << [row_index, column_index]
-              else
-                nondrawn_numbers << value
-              end
-            end
-          end
+          bingo_won, nondrawn_numbers = state_of_board(board, drawn_numbers)
 
-          bingo_row = drawn_coordinates.map { |x| x[0] }.tally.value?(5)
-          bingo_column = drawn_coordinates.map { |x| x[1] }.tally.value?(5)
-
-          next unless bingo_row || bingo_column
+          next unless bingo_won
 
           if player_win || indices_of_winning_boards.count == @boards.count - 1
             return nondrawn_numbers.sum * drawn_numbers.last
@@ -42,9 +26,25 @@ module Year2021
         end
       end
     end
-    # rubocop:enable Metrics/AbcSize
-    # rubocop:enable Metrics/CyclomaticComplexity
-    # rubocop:enable Metrics/PerceivedComplexity
+
+    def state_of_board(board, drawn_numbers)
+      drawn_coordinates = []
+      nondrawn_numbers = []
+      board.each_with_index do |row, row_index|
+        row.each_with_index do |value, column_index|
+          if drawn_numbers.include?(value)
+            drawn_coordinates << [row_index, column_index]
+          else
+            nondrawn_numbers << value
+          end
+        end
+      end
+
+      bingo_row = drawn_coordinates.map { |x| x[0] }.tally.value?(5)
+      bingo_column = drawn_coordinates.map { |x| x[1] }.tally.value?(5)
+
+      [bingo_row || bingo_column, nondrawn_numbers]
+    end
 
     def part_1
       @all_drawn_numbers, @boards = data
