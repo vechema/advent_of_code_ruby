@@ -7,25 +7,44 @@ module Year2022
     # @input is available if you need the raw data input
     # Call `data` to access either an array of the parsed data, or a single record for a 1-line input file
 
-    def compare(left, right)
-      return false if right.nil?
-
+    def convert(left, right)
       if left.is_a?(Numeric) && right.is_a?(Array)
         left = [left]
       elsif left.is_a?(Array) && right.is_a?(Numeric)
         right = [right]
       end
 
-      if left.is_a?(Numeric)
-        return false if right.nil?
-        return true if left < right
-        return false if right < left
-      else
-        left.each_with_index do |l, index|
-          x = compare(l, right[index])
+      [left, right]
+    end
 
-          return x unless x.nil?
-        end
+    def number_compare(left, right)
+      return false if right.nil? || right < left
+      return true if left < right
+
+      nil
+    end
+
+    def array_compare(left, right)
+      left.each_with_index do |l, index|
+        x = compare(l, right[index])
+
+        return x unless x.nil?
+      end
+
+      nil
+    end
+
+    def compare(left, right)
+      return false if right.nil?
+
+      left, right = convert(left, right)
+
+      if left.is_a?(Numeric)
+        number_compare = number_compare(left, right)
+        return number_compare unless number_compare.nil?
+      else
+        array_compare = array_compare(left, right)
+        return array_compare unless array_compare.nil?
 
         return true if left.count < right.count
       end
