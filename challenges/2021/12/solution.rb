@@ -6,11 +6,11 @@ module Year2021
     # Call `data` to access either an array of the parsed data, or a single record for a 1-line input file
 
     def part_1
-      Graph.new(edges: data, double_visit: false).all_paths.length
+      CaveGraph.new(edges: data, double_visit: false).all_paths.length
     end
 
     def part_2
-      Graph.new(edges: data, double_visit: true).all_paths.length
+      CaveGraph.new(edges: data, double_visit: true).all_paths.length
     end
 
     # Processes each line of the input file and stores the result in the dataset
@@ -25,7 +25,7 @@ module Year2021
   end
 end
 
-class Graph
+class CaveGraph
   attr_reader :all_paths
 
   def initialize(edges:, double_visit:)
@@ -33,8 +33,8 @@ class Graph
     @nodes = Set[]
     edges.each do |edge|
       name1, name2 = edge.split('-')
-      @nodes.add(Node.new(name1))
-      @nodes.add(Node.new(name2))
+      @nodes.add(CaveNode.new(name1))
+      @nodes.add(CaveNode.new(name2))
 
       node1 = find_node(name1)
       node2 = find_node(name2)
@@ -96,7 +96,7 @@ class Graph
   end
 end
 
-class Node
+class CaveNode
   attr_reader :name, :neighbors
 
   def initialize(name)
