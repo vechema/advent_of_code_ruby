@@ -107,12 +107,6 @@ class PipeGraph
     end
   end
 
-  # def calculate_paths(steps)
-  #   path = [start_node]
-  #   puts "Starting! path: #{path.map(&:name)}"
-  #   all_path_dfs(steps_left: steps, path: path, neighbors: start_node.neighbors)
-  # end
-
   def start_node
     find_node('AA')
   end
@@ -132,18 +126,6 @@ class PipeGraph
   def find_node(name)
     @nodes.find { |node| node.name == name }
   end
-
-  # def all_path_dfs(steps_left:, path:, neighbors:)
-  #   if steps_left.zero?
-  #     @all_paths << path.clone
-  #   else
-  #     neighbors.each do |neighbor|
-  #       path << neighbor
-  #       all_path_dfs(steps_left: steps_left - 1, path: path, neighbors: neighbor.neighbors)
-  #       path.pop
-  #     end
-  #   end
-  # end
 end
 
 class CaveNode
