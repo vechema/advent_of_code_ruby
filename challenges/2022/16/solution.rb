@@ -17,6 +17,7 @@ module Year2022
       ans
     end
 
+    # dfs
     def score(current_valve, opened_valves, time_left, other_players)
       if time_left.zero?
         return other_players.positive? ? score(@pipe_graph.start_node.index, opened_valves, 26, other_players - 1) : 0
