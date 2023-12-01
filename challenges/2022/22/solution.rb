@@ -1,5 +1,11 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/ClassLength
+# rubocop:disable Metrics/CyclomaticComplexity
+# rubocop:disable Metrics/MethodLength
+# rubocop:disable Metrics/PerceivedComplexity
+# rubocop:disable Naming/MethodParameterName
+# rubocop:disable Metrics/AbcSize
 module Year2022
   class Day22 < Solution
     # @input is available if you need the raw data input
@@ -265,3 +271,9 @@ module Year2022
     end
   end
 end
+# rubocop:enable Metrics/ClassLength
+# rubocop:enable Metrics/CyclomaticComplexity
+# rubocop:enable Metrics/MethodLength
+# rubocop:enable Metrics/PerceivedComplexity
+# rubocop:enable Naming/MethodParameterName
+# rubocop:enable Metrics/AbcSize
