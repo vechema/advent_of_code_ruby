@@ -10,3 +10,7 @@ bundle exec rspec spec/2021/01/solution_spec.rb
 
 rubocop
 ```
+
+# Cookie
+
+F12 - Storage tab while at advent of code website
