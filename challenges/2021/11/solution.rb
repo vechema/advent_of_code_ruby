@@ -25,7 +25,7 @@ module Year2021
   end
 end
 
-class Grid
+class NumberGrid
   def initialize(rows:)
     @grid = rows.map do |row|
       row.chars.map(&:to_i)
@@ -71,7 +71,7 @@ class Grid
   end
 end
 
-class OctopusMap < Grid
+class OctopusMap < NumberGrid
   def steps(num_steps:)
     total_flashes = 0
     num_steps.times do
